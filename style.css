@@ -1,0 +1,166 @@
+body {
+    background-color: #5A7EDC;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    font-family: "Tahoma", "Segoe UI", sans-serif;
+}
+
+/* Atalho na Área de Trabalho */
+.desktop-icon-area {
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.desktop-shortcut {
+    background: transparent;
+    border: 1px solid transparent;
+    color: white;
+    cursor: pointer;
+    text-align: center;
+    padding: 10px;
+    width: 100px;
+    transition: 0.2s;
+}
+
+.desktop-shortcut:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.desktop-shortcut .icon {
+    font-size: 3.5rem;
+    margin-bottom: 5px;
+    filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.5));
+}
+
+.desktop-shortcut .label {
+    font-size: 0.85rem;
+    text-shadow: 1px 1px 3px black;
+    font-weight: bold;
+}
+
+/* Estrutura da Janela */
+.window {
+    background-color: #ECE9D8;
+    border: 3px solid #0055E5;
+    border-radius: 8px 8px 0 0;
+    width: 450px; /* Largura padrão */
+    padding: 2px;
+    box-shadow: 10px 10px 30px rgba(0,0,0,0.4);
+    transition: width 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.window.scientific-active {
+    width: 820px; /* Expansão horizontal */
+}
+
+.title-bar {
+    background: linear-gradient(to bottom, #0058E6 0%, #3A93FF 10%, #288EFC 14%, #005BE9 100%);
+    padding: 6px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+    text-shadow: 1px 1px #000;
+}
+
+.title-bar-controls button {
+    width: 22px;
+    height: 22px;
+    border: 1px solid #FFF;
+    border-radius: 3px;
+    margin-left: 2px;
+    background-color: #0058E6;
+}
+
+.title-bar-controls .close-btn { background-color: #E33E13; position: relative; }
+.close-btn::before { content: "×"; color: white; font-weight: bold; }
+
+/* Corpo e Visor */
+.window-body { padding: 15px; }
+
+.display {
+    background-color: white;
+    border: 3px inset #7F9DB9;
+    height: 90px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 20px;
+    font-size: 3.5rem;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    color: #000;
+}
+
+.layout-flex {
+    display: flex;
+    gap: 20px;
+    overflow: hidden;
+}
+
+/* Grades de Botões */
+.grid-standard, .grid-scientific {
+    display: grid;
+    gap: 10px;
+}
+
+.grid-standard {
+    grid-template-columns: repeat(4, 1fr);
+    min-width: 410px;
+}
+
+.grid-scientific {
+    grid-template-columns: repeat(2, 1fr);
+    min-width: 330px;
+    border-left: 2px groove #fff;
+    padding-left: 20px;
+    opacity: 0;
+    transform: translateX(50px);
+    transition: 0.4s ease;
+    pointer-events: none;
+}
+
+.window.scientific-active .grid-scientific {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+}
+
+.section-label {
+    grid-column: span 2;
+    text-align: center;
+    font-size: 0.8rem;
+    color: #555;
+    text-transform: uppercase;
+}
+
+/* Estilo dos Botões */
+button {
+    height: 65px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border: 1px solid #003C74;
+    background: linear-gradient(to bottom, #FFF 0%, #F0F0F0 50%, #E0E0E0 100%);
+    border-radius: 5px;
+    cursor: pointer;
+    color: #003C74;
+}
+
+button:active {
+    background: #CDCDCD;
+    box-shadow: inset 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.btn-op { color: #CC0000; }
+.btn-tool { color: #222; }
+.equal { grid-row: span 2; height: 140px; background: #FF9933; color: white; border-color: #B36B00; }
+.zero { grid-column: span 2; }
